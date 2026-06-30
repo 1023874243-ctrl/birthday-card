@@ -242,7 +242,8 @@
     animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     pointer-events: auto;
     letter-spacing: 1px;
-    max-width: 320px;
+    max-width: 400px;
+    width: 90vw;
   }
   .popup .popup-quote {
     margin-bottom: 14px;
@@ -459,7 +460,7 @@
       // 图片型
       const img = document.createElement('img');
       img.src = quote.img;
-      img.style.cssText = 'max-width:260px;max-height:200px;border-radius:12px;display:block;margin-bottom:6px;';
+      img.style.cssText = 'max-width:100%;max-height:260px;border-radius:12px;display:block;margin-bottom:6px;';
       popup.appendChild(img);
       popup.style.padding = '12px';
     } else {
