@@ -470,13 +470,18 @@
       // 音频播放器（如果有音源）
       if (quote.audio) {
         const audio = document.createElement('audio');
+        audio.src = quote.audio;
         audio.controls = true;
-        audio.style.cssText = 'width:100%;margin-top:10px;border-radius:8px;';
-        const source = document.createElement('source');
-        source.src = quote.audio;
-        source.type = 'audio/mp4';
-        audio.appendChild(source);
-        audio.textContent = '你的浏览器不支持音频播放';
+        audio.playsInline = true;
+        audio.preload = 'auto';
+        audio.style.cssText = 'width:100%;margin-top:10px;border-radius:8px;outline:none;';
+        audio.onerror = () => {
+          audio.style.display = 'none';
+          const err = document.createElement('p');
+          err.style.cssText = 'color:#c4956a;font-size:13px;margin-top:6px;';
+          err.textContent = '⚠️ 音频加载失败，请稍后重试';
+          popup.appendChild(err);
+        };
         popup.appendChild(audio);
       } else if (quote.songLink) {
         // 没有音源时显示跳转链接
