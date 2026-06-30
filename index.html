@@ -286,8 +286,8 @@
     color: #8b6914;
   }
   @keyframes popIn {
-    0% { opacity: 0; transform: translate(-50%, 10px) scale(0.85); }
-    100% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
   }
 
   /* === 撒花/彩带 === */
@@ -495,10 +495,10 @@
       }
     }
 
-    // 位置：每个弹窗略微偏移，避免重叠
-    const offsetY = document.querySelectorAll('.popup').length * 20;
-    popup.style.left = x + 'px';
-    popup.style.top = (y - 10 + offsetY) + 'px';
+    // 位置：屏幕居中，每个弹窗略微向下偏移避免重叠
+    const existing = document.querySelectorAll('.popup').length;
+    popup.style.left = '50%';
+    popup.style.top = `calc(50% + ${existing * 24}px)`;
     document.body.appendChild(popup);
   }
 
